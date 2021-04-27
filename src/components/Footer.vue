@@ -18,6 +18,10 @@
           class="text-orange-600 hover:underline hover:text-orange-400"
           >www.flaticon.com</a
         >
+        <p class="text-xs">
+          This product uses the TMDb API but is not endorsed or certified by
+          TMDb.
+        </p>
       </div>
       <img :src="tmdbLogo" alt="TMDB Logo" class="w-10 h-10" />
     </div>
