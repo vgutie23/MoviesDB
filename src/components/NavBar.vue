@@ -13,7 +13,7 @@
         <div v-if="isAuthenticated" class="flex items-center space-x-3">
           <p class="text-gray-200">Welcome {{ user?.displayName }}</p>
           <button
-            @click="signOut"
+            @click="out"
             class="px-6 py-2 font-semibold bg-orange-600 rounded-full focus:ring-orange-800 focus:ring-3 focus:outline-none text-gray-200 hover:bg-orange-700"
           >
             Logout
@@ -34,6 +34,13 @@
 
 <script setup>
 import { authentication } from '~/helpers/useFirebase'
+import { movies, page } from '~/helpers/useMovies'
 
 const { signIn, signOut, isAuthenticated, user } = authentication()
+
+const out = () => {
+  signOut()
+  page.value = 1
+  movies.value = []
+}
 </script>

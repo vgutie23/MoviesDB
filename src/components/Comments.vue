@@ -1,9 +1,9 @@
 <template>
   <div
     class="fixed inset-0 bg-red-700 bg-center bg-cover"
-    style="
-      background-image: url('https://via.placeholder.com/1920x1080.png?text=MoviesDB+Background+Image');
-    "
+    :style="`
+      background-image: url('${bgBaseURL}${movie.backdrop_path}');
+    `"
   >
     <button @click="emit('close')" class="absolute text-gray-400 right-4 top-4">
       <ant-design:close-circle-twotone
@@ -14,7 +14,7 @@
       <h1
         class="text-5xl font-semibold tracking-wide uppercase text-gray-100 filter drop-shadow-xl"
       >
-        movie.title
+        {{ movie.title }}
       </h1>
     </div>
     <div
@@ -40,7 +40,20 @@
 </template>
 
 <script setup>
-import { defineEmit } from 'vue'
+import { defineEmit, defineProps } from 'vue'
+import { bgBaseURL } from '~/helpers/useMovies'
 
 const emit = defineEmit(['close'])
+
+const props = defineProps({
+  movie: {
+    type: Object,
+    default: () => {
+      return {
+        title: '',
+        backdrop_path: '',
+      }
+    },
+  },
+})
 </script>
